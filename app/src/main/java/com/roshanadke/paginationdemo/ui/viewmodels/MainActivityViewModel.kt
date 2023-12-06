@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.roshanadke.paginationdemo.data.repository.QuotesRepository
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -12,6 +13,8 @@ import kotlinx.coroutines.flow.onEach
 class MainActivityViewModel(
     private val repository: QuotesRepository
 ): ViewModel() {
+
+    val pagingQuotesList = repository.getPagerQuotes().cachedIn(viewModelScope)
 
     companion object {
         fun provideFactory(repository: QuotesRepository): ViewModelProvider.Factory {
