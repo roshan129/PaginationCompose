@@ -5,7 +5,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.roshanadke.paginationdemo.data.dto.QuotesMainDto
 import com.roshanadke.paginationdemo.data.network.QuotesApiService
-import com.roshanadke.paginationdemo.paging.QuotesPagingSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -22,8 +21,13 @@ class QuotesRepositoryImpl(
         }
     }
 
-    override fun getPagerQuotes() = Pager(
-        config = PagingConfig(10, maxSize = 100),
-        pagingSourceFactory = { QuotesPagingSource(apiService) }
-    ).liveData
+    override suspend fun getPagingQuotes(page: Int, limit: Int): Result<QuotesMainDto> {
+        return try {
+            val result = apiService.getQuotes(page, limit)
+            Result.success(result)
+        }catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
 }

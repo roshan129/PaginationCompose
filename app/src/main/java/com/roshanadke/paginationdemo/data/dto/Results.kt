@@ -1,6 +1,6 @@
 package com.roshanadke.paginationdemo.data.dto
 
-data class Result(
+data class Results(
     val _id: String,
     val author: String,
     val authorSlug: String,

@@ -19,5 +19,4 @@ interface QuotesApiService {
         @Query("limit") limit: Int
     ): QuotesMainDto
 
-
 }

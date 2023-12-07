@@ -1,7 +1,7 @@
 package com.roshanadke.paginationdemo.ui.viewmodels
 
 import com.roshanadke.paginationdemo.data.dto.QuotesMainDto
-import com.roshanadke.paginationdemo.data.dto.Result
+import com.roshanadke.paginationdemo.data.dto.Results
 import com.roshanadke.paginationdemo.data.network.QuotesApiService
 
 class FakeQuotesService :QuotesApiService {
@@ -11,7 +11,7 @@ class FakeQuotesService :QuotesApiService {
         lastItemIndex = 1522,
         page = 2802,
         results = listOf(
-            Result(
+            Results(
                 _id = "ac",
                 author = "adolescens",
                 authorSlug = "enim",
@@ -21,7 +21,7 @@ class FakeQuotesService :QuotesApiService {
                 length = 4170,
                 tags = listOf()
             ),
-            Result(
+            Results(
                 _id = "graeci",
                 author = "oporteat",
                 authorSlug = "porro",
